@@ -1,20 +1,61 @@
 <html>
-  <head>
-    <title> INCRIPTION </inscription>
-    <meta charset="utf-8">
-  </head>
-  <body>
-  <div align="center">
-    <h2>Inscription</h2>
-    <br/> <br/> 
-    <form method="POST" action=" ">
-      <table>
+   <head>
+      <title>TUTO PHP</title>
+      <meta charset="utf-8">
+   </head>
+   <body>
+      <div align="center">
+         <h2>Inscription</h2>
+         <br /><br />
+         <form method="POST" action="">
+            <table>
                <tr>
                   <td align="right">
-                     <label for="pseudo">Pseudo :</label>
+                     <label for="nom">Nom :</label>
                   </td>
                   <td>
-                     <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" />
+                     <input type="text" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>" />
+                  </td>
+               </tr>
+			    <tr>
+                  <td align="right">
+                     <label for="prenom">Prénom :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Votre prénom" id="prénom" name="prénom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
+                  </td>
+               </tr>
+			    <tr>
+                  <td align="right">
+                     <label for="adresse">Adresse :</adresse>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Votre adresse" id="adresse" name="adresse" value="<?php if(isset($adresse)) { echo $adresse; } ?>" />
+                  </td>
+               </tr>
+  
+			    <tr>
+                  <td align="right">
+                     <label for="ville">Ville :</ville>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Votre ville" id="ville" name="ville" value="<?php if(isset($ville)) { echo $ville; } ?>" />
+                  </td>
+               </tr>
+			    <tr>
+                  <td align="right">
+                     <label for="cp">Code postal :</cp>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Votre code postal" id="cp" name="cp" value="<?php if(isset($cp)) { echo $cp; } ?>" />
+                  </td>
+               </tr>
+			   <tr>
+                  <td align="right">
+                     <label for="datenaissance">Date de naissance :</datenaissance>
+                  </td>
+                  <td>
+                     <input type="date" placeholder="Votre date de naissance" id="datenaissance" name="datenaissance" value="<?php if(isset($datenaissance)) { echo $datenaissance; } ?>" />
                   </td>
                </tr>
                <tr>
@@ -22,7 +63,7 @@
                      <label for="mail">Mail :</label>
                   </td>
                   <td>
-                     <input type="email" placeholder="Votre mail" id="mail" name="mail" />
+                     <input type="email" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
                   </td>
                </tr>
                <tr>
@@ -30,7 +71,7 @@
                      <label for="mail2">Confirmation du mail :</label>
                   </td>
                   <td>
-                     <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2"  />
+                     <input type="email" placeholder="Confirmez votre mail" id="mail2" name="mail2" value="<?php if(isset($mail2)) { echo $mail2; } ?>" />
                   </td>
                </tr>
                <tr>
@@ -57,8 +98,12 @@
                   </td>
                </tr>
             </table>
-    </form>
-    </div>
-  </body>
+         </form>
+         <?php
+         if(isset($erreur)) {
+            echo '<font color="red">'.$erreur."</font>";
+         }
+         ?>
+      </div>
+   </body>
 </html>
-  
