@@ -2,6 +2,7 @@
 $bdd = new PDO('mysql:host=192.168.137.1;dbname=music', 'root', '');
 
 if(isset($_POST['forminscription'])) {
+   $pseudo = htmlspecialchars($_POST['pseudo']);
    $nom = htmlspecialchars($_POST['nom']);
    $prenom = htmlspecialchars($_POST['prenom']);
    $adresse = htmlspecialchars($_POST['adresse']);
@@ -12,7 +13,7 @@ if(isset($_POST['forminscription'])) {
    $mail2 = htmlspecialchars($_POST['mail2']);
    $mdp = sha1($_POST['mdp']);
    $mdp2 = sha1($_POST['mdp2']);
-   if(!empty($_POST['nom'])AND !empty($_POST['prenom'])AND !empty($_POST['adresse'])AND !empty($_POST['ville'])AND !empty($_POST['cp'])AND !empty($_POST['datenaissance']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
+   if(!empty($_POST['pseudo'])AND !empty($_POST['nom'])AND !empty($_POST['prenom'])AND !empty($_POST['adresse'])AND !empty($_POST['ville'])AND !empty($_POST['cp'])AND !empty($_POST['datenaissance']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
       $nomlength = strlen($nom);
       if($nomlength <= 255) {
          if($mail == $mail2) {
@@ -22,7 +23,7 @@ if(isset($_POST['forminscription'])) {
                $mailexist = $reqmail->rowCount();
                if($mailexist == 0) {
                   if($mdp == $mdp2) {
-                     $insertmbr = $bdd->prepare("INSERT INTO membres(nom,prenom,adresse,ville,cp, datenaissance, mail, motdepasse) VALUES(?, ?, ?)");
+                     $insertmbr = $bdd->prepare("INSERT INTO membres(pseudo,nom,prenom,adresse,ville,cp, datenaissance, mail, motdepasse) VALUES(?, ?, ?)");
                      $insertmbr->execute(array($nom,$prenom,$adresse,$ville,$cp,$datenaissance, $mail, $mdp));
                      $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
                   } else {
